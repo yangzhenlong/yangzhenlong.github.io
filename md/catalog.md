@@ -1,13 +1,13 @@
 # 博客导航
 ## java
-- [&与&&的区别](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/blog/md/java/java_and.md)
-- [synchronized与lock比较](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/blog/md/java/java_lock.md)
-- [volatile](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/blog/md/java/java_volatile.md)
-- [base64转换](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/blog/md/java/base64.md)
-- [日期处理](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/blog/md/java/date.md)
+- [&与&&的区别](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/master/md/java/java_and.md)
+- [synchronized与lock比较](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/master/md/java/java_lock.md)
+- [volatile](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/master/md/java/java_volatile.md)
+- [base64转换](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/master/md/java/base64.md)
+- [日期处理](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/master/md/java/date.md)
 ## java8
-- [list常用](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/blog/md/java8/java8_list.md)
-- [optional使用](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/blog/md/java8/java8_optional.md)
+- [list常用](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/master/md/java8/java8_list.md)
+- [optional使用](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/master/md/java8/java8_optional.md)
 ## spring
 ## spring boot
 - [helloWorld](https://github.com/yangzhenlong/mySpringBootDemo/tree/master/springboot01-HelloWorld)
