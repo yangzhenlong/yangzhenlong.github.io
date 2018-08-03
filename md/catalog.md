@@ -1,6 +1,6 @@
 # 目录
-- [java java日常总结，常用类解析](#Java)
-- [java8 新特性、常用工具实例](#Java8)
+- [java java日常总结，常用类解析](#java)
+- [java8 新特性、常用工具实例](#java8)
 - [spring](#spring)
 - [spring boot 快速开发框架，实例demo](#springboot)
 - [spring cloud 待更新](#springcloud)
