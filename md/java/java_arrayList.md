@@ -1,8 +1,15 @@
 # ArrayList（java8）
-[简要介绍](#简要介绍)
-
-[重要属性](#重要属性)
-## 简要介绍
+#### 目录
+- [简要介绍](#简要介绍)
+- [重要属性](#重要属性)
+- [构造方法](#构造方法)
+- [添加元素 add()](#添加元素)
+- [扩容 grow()](#扩容grow)
+- [快速随机访问 get()](#快速随机访问get)
+- [设置新值并返回旧值set](#设置新值并返回旧值set)
+- [移除remove](#移除remove)
+- [最后说一下modCount](#最后说一下modCount)
+#### 简要介绍
 ```java
 public class ArrayList<E> extends AbstractList<E>
         implements List<E>, RandomAccess, Cloneable, java.io.Serializable{}
@@ -18,7 +25,7 @@ public class ArrayList<E> extends AbstractList<E>
 查询效率高
 更新操作时，需要复制和移动数组，效率较低
 ```
-## 重要属性
+#### 重要属性
 ```java
 transient Object[] elementData;  // 存放元素的数组，这里使用transient，表示不自动序列化
 
@@ -32,7 +39,7 @@ private void readObject(java.io.ObjectInputStream s){}
 ```java
 private int size;  // 实际存放元素的数量
 ```
-构造方法
+#### 构造方法
 ```java
  public ArrayList() {
     this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
@@ -42,7 +49,7 @@ public ArrayList(int initialCapacity){}
 //指定一个集合，会将集合中的元素添加到ArrayList中
 public ArrayList(Collection<? extends E> c) {}
 ```
-添加元素 add()
+#### 添加元素
 ```java
 //添加元素，默认在数组尾部添加
 public boolean add(E e) {
@@ -63,7 +70,7 @@ public void add(int index, E element) {
 }
 ```
 
-扩容 grow()
+#### 扩容grow
 ```java
 //扩容检测
 private void ensureCapacityInternal(int minCapacity) {
@@ -99,7 +106,7 @@ private static int hugeCapacity(int minCapacity) {
 }
 ```
 
-快速随机访问 get(int index)
+#### 快速随机访问get
 ```java
 public E get(int index) {
     rangeCheck(index);//检查index是否超过数组大小
@@ -107,7 +114,7 @@ public E get(int index) {
     return elementData(index);//返回数组指定位置的元素
 }
 ```
-设置新值并返回旧值 set(int index, E element)
+#### 设置新值并返回旧值set
 ```java
 public E set(int index, E element) {
     rangeCheck(index);//检查index是否超过数组大小
@@ -117,7 +124,7 @@ public E set(int index, E element) {
     return oldValue;//返回之前的值
 }
 ```
-移除 remove()
+#### 移除remove
 ```java
 public E remove(int index) {
     rangeCheck(index);
@@ -137,7 +144,7 @@ public E remove(int index) {
 }
 ```
 
-最后说一下 modCount
+#### 最后说一下modCount
 ```java
 在父类AbstractList中定义的modCount
 protected transient int modCount = 0;
@@ -160,4 +167,6 @@ modCount是和expectedModCount配合一起使用
 在对集合进行迭代操作时，可能会有add或者remove等操作造成结构改变而发生迭代错误
 使用checkForComodification()方法，比较修改数和期望修改数，来规避迭代危险
 ```
+
+#### [回到目录](#目录)
 
