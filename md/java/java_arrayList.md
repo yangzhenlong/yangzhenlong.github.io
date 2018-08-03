@@ -134,3 +134,27 @@ public E remove(int index) {
 }
 ```
 
+最后说一下 modCount
+```java
+在父类AbstractList中定义的modCount
+protected transient int modCount = 0;
+list的所有关于结构变化的操作（add、remove、addAll、removeRange和clear），都会让modCount++
+
+而在私有内部类迭代器Itr中定义了变量expectedModCount和checkForComodification方法
+private class Itr implements Iterator<E> {
+    int expectedModCount = modCount;
+    
+    final void checkForComodification() {
+        //如果修改数和期望修改数不一致，抛出异常
+        if (modCount != expectedModCount)
+            throw new ConcurrentModificationException();
+    }
+}
+
+-
+
+modCount是和expectedModCount配合一起使用
+在对集合进行迭代操作时，可能会有add或者remove等操作造成结构改变而发生迭代错误
+使用checkForComodification()方法，比较修改数和期望修改数，来规避迭代危险
+```
+
