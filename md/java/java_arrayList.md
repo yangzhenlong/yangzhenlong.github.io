@@ -1,5 +1,8 @@
 # ArrayList（java8）
-简要介绍
+[简要介绍](#简要介绍)
+
+[重要属性](#重要属性)
+## 简要介绍
 ```java
 public class ArrayList<E> extends AbstractList<E>
         implements List<E>, RandomAccess, Cloneable, java.io.Serializable{}
@@ -15,7 +18,7 @@ public class ArrayList<E> extends AbstractList<E>
 查询效率高
 更新操作时，需要复制和移动数组，效率较低
 ```
-重要属性
+## 重要属性
 ```java
 transient Object[] elementData;  // 存放元素的数组，这里使用transient，表示不自动序列化
 
