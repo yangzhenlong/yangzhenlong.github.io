@@ -47,4 +47,5 @@
 ## springcloud
 ## 分布式
 ## DB
+- [mysql优化专题](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/master/md/mysql/tobetter.md)
 ## 前端
