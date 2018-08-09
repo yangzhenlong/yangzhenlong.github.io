@@ -5,7 +5,7 @@
 - [spring boot 快速开发框架，实例demo](#springboot)
 - [spring cloud 待更新](#springcloud)
 - [分布式 事务、锁、限流等解决方案](#分布式)
-- [db mysql、mongo、elasticsearch等](#DB)
+- [db mysql、mongo、elasticsearch等](#db)
 - [前端 js、es、vue等](#前端)
 ## Java
 - [&与&&的区别](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/master/md/java/java_and.md)
