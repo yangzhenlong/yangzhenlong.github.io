@@ -45,6 +45,7 @@
 - [发布和监听事件event](https://github.com/yangzhenlong/mySpringBootDemo/tree/master/springboot14-event)
 - [定时任务管理，带管理页面](https://github.com/yangzhenlong/mySpringBootDemo/tree/master/springboot15-quartz)
 ## springcloud
+- [Eureka](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/master/md/springcloud/eureka.md)
 ## 分布式
 ## DB
 - [mysql优化专题](https://github.com/yangzhenlong/yangzhenlong.github.io/blob/master/md/mysql/tobetter.md)
