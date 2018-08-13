@@ -136,4 +136,4 @@ pee3同pee1，将端口改为9903，注册中心地址改为 http://9901,http://
 ![image](https://wx4.sinaimg.cn/mw690/006YXPCQly1fu85sf88jxj31fv0q9tap.jpg)
 
 ## 源码地址
-[https://github.com/yangzhenlong/springCloudDemo](https://github.com/yangzhenlong/springCloudDemo)
+[https://github.com/yangzhenlong/springCloudDemo/tree/master/springCloudEureka](https://github.com/yangzhenlong/springCloudDemo/tree/master/springCloudEureka)
