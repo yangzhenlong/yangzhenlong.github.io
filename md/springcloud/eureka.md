@@ -3,6 +3,7 @@
 - [Eureka介绍](#Eureka介绍)
 - [单节点注册中心](#单节点注册中心)
 - [Eureka集群搭建](#Eureka集群)
+- [源码地址](#源码地址)
 ## Eureka介绍
 ```java
 Eureka is a REST (Representational State Transfer) based service that is primarily used in the AWS cloud for locating services for the purpose of load balancing and failover of middle-tier servers.
