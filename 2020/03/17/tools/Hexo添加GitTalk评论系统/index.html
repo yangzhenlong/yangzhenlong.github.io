@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scaleable=0" name="viewport">
+	<title>Abulin技术站</title>
+	
+<link rel="stylesheet" href="/css/style.css">
+
+	
+<link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css">
+
+	<link rel="icon" href="/images/abulin.jpg">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?822a3a1cdee727463b24d3ef09c24d4b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+	<body>
+		<header class="header">
+	<div class="header_top">
+		<span class="theme">
+			<a href="/">
+				Abulin 技术站
+			</a>	
+		</span>
+		<nav class="navbar">
+			<ul class="menu">
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/" class="menu-item-link">
+							HOME
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/categories" class="menu-item-link">
+							CATEGORIES
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/archives" class="menu-item-link">
+							ARCHIVES
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/tags" class="menu-item-link">
+							TAGS
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/about" class="menu-item-link">
+							ABOUT
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/friendlink" class="menu-item-link">
+							友链
+						</a>
+					</li>
+					
+			</ul>
+		</nav>
+	</div>
+	<i id="homelink" data-link="http://yoursite.com/"></i>
+	<div class="header_bottom">
+		<div class="blog-title">
+			<a href="https://abulin.site" target="_blank" rel="noopener" class="logo">Abulin技术站</a>
+			<div class="descrs">
+				<div class="descr">技术、技能、心理、情感</div>
+				<div class="descr">愿你有勇敢的朋友，有厉害的对手。愿你对过往的一切情深义重，但从不回头。愿你特别美丽，特别平静，特别凶狠，也特别温柔。</div>
+			</div>
+			<div class="blog-down">
+				<a href="javascript:void(0);">
+					<i class="fa fa-angle-double-down fa-2x"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</header>
+
+		<main class="main">
+			<section class="posts">
+	<article class="post_full"> 
+	<h1 class="post-title">
+		<div class="post-title-link">
+			Hexo添加GitTalk评论系统
+		</div>
+	</h1>
+	
+	<div class="post-info">
+		<div class="post-date">
+				<i class="fa fa-calendar"></i>&nbsp2020-03-17&nbsp&nbsp&nbsp
+		</div>
+		
+				<span class="post-words">
+					<i class="fa fa-pencil-square-o"></i>&nbsp614&nbspwords&nbsp&nbsp
+				</span>
+				<span class="post-time">
+					<i class="fa fa-clock-o"></i>&nbsp2 mins&nbsp&nbsp&nbsp
+				</span>
+		
+		<div class="post-tags">
+			
+    
+        <i class="fa fa-tags"></i>  <a href="/tags/GitTalk/"> GitTalk</a> <a href="/tags/评论系统/"> 评论系统</a>
+    
+		</div>
+	</div>
+	<div class="post-content">
+		<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>静态博客的评论系统 GitTalk</p>
+<h1 id="GitTalk介绍"><a href="#GitTalk介绍" class="headerlink" title="GitTalk介绍"></a>GitTalk介绍</h1><blockquote>
+<p>Gitalk 是一个基于 GitHub Issue 和 Preact 开发的评论插件</p>
+</blockquote>
+<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a href="https://gitalk.github.io" target="_blank" rel="noopener">https://gitalk.github.io</a></p>
+<a id="more"></a>
+
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>使用 GitHub 登录</li>
+<li>支持多语言 [en, zh-CN, zh-TW, es-ES, fr, ru]</li>
+<li>支持个人或组织</li>
+<li>无干扰模式（设置 distractionFreeMode 为 true 开启）</li>
+<li>快捷键提交评论 （cmd|ctrl + enter）</li>
+</ul>
+<h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><p>初次使用的人可能需要理解文档内容后才可入手，所以笔者这里记录下安装过程，适合新手一起参考和学习。</p>
+<h2 id="创建GitHub仓库"><a href="#创建GitHub仓库" class="headerlink" title="创建GitHub仓库"></a>创建GitHub仓库</h2><p>该仓库需要打开<code>Issues</code>功能</p>
+<h2 id="创建GitHub应用"><a href="#创建GitHub应用" class="headerlink" title="创建GitHub应用"></a>创建GitHub应用</h2><p>创建应用后会拿到<code>Client ID</code>和<code>Client secret</code>，这个是作为评论系统的凭证（用户名密码）。</p>
+<h3 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h3><p><code>GitHub</code> -&gt; <code>头像</code> -&gt; <code>setting</code> -&gt; <code>Developer settings</code> -&gt; <code>New OAuth App</code></p>
+<p>或者点击这个链接直接进入申请入口</p>
+<ul>
+<li><a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">https://github.com/settings/applications/new</a></li>
+</ul>
+<h3 id="填写应用信息"><a href="#填写应用信息" class="headerlink" title="填写应用信息"></a>填写应用信息</h3><img src='/images/comment/new_gittalk.jpg' width='500px' height='500px' />
+
+<p>创建成功后，会生成<code>Client ID</code>和<code>Client secret</code></p>
+<img src='/images/comment/new_gittalk_succ.jpg' width='500px' height='200px' />
+
+<h3 id="集成到Hexo系统中"><a href="#集成到Hexo系统中" class="headerlink" title="集成到Hexo系统中"></a>集成到Hexo系统中</h3><p>在主题的<code>_config.yml</code>文件中添加配置</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true">#gitalk settings</span>
+<span class="token key atrule">gitalk</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true </span><span class="token comment" spellcheck="true"># 用来做启用判断可以不用</span>
+  <span class="token key atrule">owner</span><span class="token punctuation">:</span> <span class="token string">'用户名'</span> <span class="token comment" spellcheck="true"># GitHub repo owner</span>
+  <span class="token key atrule">repo</span><span class="token punctuation">:</span> <span class="token string">'上面创建的仓库名称'</span> <span class="token comment" spellcheck="true"># GitHub repo</span>
+  <span class="token key atrule">admin</span><span class="token punctuation">:</span> <span class="token string">'用户名'</span> <span class="token comment" spellcheck="true"># GitHub repo owner and collaborators, only these guys can initialize github issues</span>
+  <span class="token key atrule">clientID</span><span class="token punctuation">:</span> <span class="token string">'应用 clientID'</span> <span class="token comment" spellcheck="true"># Github Application clientID</span>
+  <span class="token key atrule">clientSecret</span><span class="token punctuation">:</span> <span class="token string">'应用 clientSecret'</span> <span class="token comment" spellcheck="true"># Github Application clientSecret</span>
+  <span class="token key atrule">id</span><span class="token punctuation">:</span> <span class="token string">'location.pathname'</span> <span class="token comment" spellcheck="true"># 文章id</span></code></pre>
+<p>在主题的<code>/layout/_partial</code>目录下，新建comment.ejs，添加内容：</p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>link rel<span class="token operator">=</span><span class="token string">"stylesheet"</span> href<span class="token operator">=</span><span class="token string">"https://unpkg.com/gitalk/dist/gitalk.css"</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"https://unpkg.com/gitalk/dist/gitalk.min.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"/js/md5.min.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"gitalk-container"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+    <span class="token keyword">var</span> gitalk <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Gitalk</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        clientID<span class="token punctuation">:</span> <span class="token string">'&lt;%= theme.gitalk.clientID %>'</span><span class="token punctuation">,</span>
+        clientSecret<span class="token punctuation">:</span> <span class="token string">'&lt;%= theme.gitalk.clientSecret %>'</span><span class="token punctuation">,</span>
+        id<span class="token punctuation">:</span> window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>pathname<span class="token punctuation">,</span>
+        repo<span class="token punctuation">:</span> <span class="token string">'&lt;%= theme.gitalk.repo %>'</span><span class="token punctuation">,</span>
+        owner<span class="token punctuation">:</span> <span class="token string">'&lt;%= theme.gitalk.owner %>'</span><span class="token punctuation">,</span>
+        admin<span class="token punctuation">:</span> <span class="token string">'&lt;%= theme.gitalk.admin %>'</span><span class="token punctuation">,</span>
+        id<span class="token punctuation">:</span> <span class="token function">md5</span><span class="token punctuation">(</span>location<span class="token punctuation">.</span>pathname<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    gitalk<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">'gitalk-container'</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<blockquote>
+<p>上面的<code>id</code>是为了区分每个文章的唯一表示，默认使用<code>location.pathname</code>来做 id，但是如果文件名包含<code>/</code>特殊字符，就会出现解析错误<code>Validation Failed</code><br>这时候需要用其他方法代替产生<code>id</code>，笔者这里使用 md5 算法来产生。</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/blueimp/JavaScript-MD5/blob/master/js/md5.min.js" target="_blank" rel="noopener">下载<code>md5.min.js</code></a>到项目主题的<code>/source/js/</code>目录下</li>
+<li>在<code>comment.ejs</code>文件中引入<code>md5.min.js</code>（也可以直接引用网络地址，为了访问速度，所以下载到本地了）</li>
+<li>使用<code>md5(location.pathname)</code>来产生 id</li>
+</ul>
+<p>在主题的<code>/layout/_partial/post.ejs</code>底部添加内容：</p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>theme<span class="token punctuation">.</span>gitalk<span class="token punctuation">.</span>enable<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token operator">%</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'./comments'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span> <span class="token operator">%</span><span class="token operator">></span></code></pre>
+<p>如果操作成功，刷新页面，应该能看到 GitTalk 评论框了。</p>
+
+	</div>
+
+	<!--打赏-->
+  <div class="reward">
+   <div class="reward-button">赏 <span class="reward-code">
+    <span class="alipay-code"> <img class="alipay-img wdp-appear" src="/images/reward/zfb.png"><b>支付宝</b> </span>
+    <span class="wechat-code"> <img class="wechat-img wdp-appear" src="/images/reward/wx.png"><b>微信</b> </span>
+   </div>
+   <p class="reward-notice">如果文章对你有帮助，请作者喝杯咖啡吧！</p>
+  </div>
+  <!--打赏-->
+
+	<div class="post-nav">
+		<div class="post-nav-prev">
+			
+				<a href="/2020/03/17/idea/%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%90%86%E8%A7%A3%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="prev" title="通俗易懂理解分布式系统">
+					<i class="fa fa-angle-double-left"></i>&nbsp通俗易懂理解分布式系统
+				</a>
+				
+		</div>
+		<div class="post-nav-next">
+					
+						<a href="/2020/03/16/git/Git%E8%87%AA%E5%AE%9A%E4%B9%89%E5%91%BD%E4%BB%A4%E5%92%8CLog%E9%A2%9C%E8%89%B2%E9%85%8D%E7%BD%AE/" rel="next" title="Git自定义命令和配置颜色">
+							Git自定义命令和配置颜色&nbsp<i class="fa fa-angle-double-right"></i>
+						</a>
+				  	
+			</div>
+			<div class="clear"></div>
+	</div>
+	<div style="text-align:center;">
+  <span id="busuanzi_container_site_pv" style="font-size:14px;margin-right:20px;color:#ccc;">
+      总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv" style="font-size:14px;margin-right:20px;color:#ccc;">
+    访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div>
+
+</article>
+
+<div class="post-toc">
+	<div class="toc-top">
+		Article Catalog
+	</div>
+	<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GitTalk介绍"><span class="toc-text">GitTalk介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文档"><span class="toc-text">文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特性"><span class="toc-text">特性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装步骤"><span class="toc-text">安装步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建GitHub仓库"><span class="toc-text">创建GitHub仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建GitHub应用"><span class="toc-text">创建GitHub应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#入口"><span class="toc-text">入口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#填写应用信息"><span class="toc-text">填写应用信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集成到Hexo系统中"><span class="toc-text">集成到Hexo系统中</span></a></li></ol></li></ol></li></ol>
+</div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '2dd25deab7cdd74074aa',
+        clientSecret: 'cf52ceb9f4c2fa3a6737c445149fbf55f24e2be5',
+        id: window.location.pathname,
+        repo: 'abulin_comments',
+        owner: 'yangzhenlong',
+        admin: 'yangzhenlong',
+        id: md5(location.pathname)
+    })
+    gitalk.render('gitalk-container')
+</script>
+
+
+
+
+
+
+
+</section>
+
+		</main>
+		<footer class="footer">
+	<div class="footer-info">
+		<p>
+			Copyright © 2019 - 2020 Abulin Blog
+		</p>
+		<p class="a">
+			Powered by <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a> | Theme - <a href="https://github.com/Chorer/hexo-theme-PureBlue" target="_blank" rel="noopener">PureBlue</a>
+		</p> 
+	</div>
+</footer>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script src="/js/navbar.js"></script>
+
+
+<script src="/js/pace.min.js"></script>
+
+
+<script src="/js/code.js"></script>
+
+
+<script src="/js/load.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/post-except.js"></script>
+
+
+	
+<script src="/js/jquery.fancybox.js"></script>
+
+	
+<script src="/js/jquery.fancyboxStart.js"></script>
+
+	
+		
+<script src="/js/toc.js"></script>
+
+		
+<script src="/js/jquery.toTop.js"></script>
+
+	
+
+
+	<script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script>
+	
+<script src="/js/IndexToTop.js"></script>
+
+
+
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</body>	
+</html>	

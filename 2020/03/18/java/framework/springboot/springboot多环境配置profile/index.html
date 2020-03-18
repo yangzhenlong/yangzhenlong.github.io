@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scaleable=0" name="viewport">
+	<title>Abulin技术站</title>
+	
+<link rel="stylesheet" href="/css/style.css">
+
+	
+<link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css">
+
+	<link rel="icon" href="/images/abulin.jpg">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?822a3a1cdee727463b24d3ef09c24d4b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+	<body>
+		<header class="header">
+	<div class="header_top">
+		<span class="theme">
+			<a href="/">
+				Abulin 技术站
+			</a>	
+		</span>
+		<nav class="navbar">
+			<ul class="menu">
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/" class="menu-item-link">
+							HOME
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/categories" class="menu-item-link">
+							CATEGORIES
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/archives" class="menu-item-link">
+							ARCHIVES
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/tags" class="menu-item-link">
+							TAGS
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/about" class="menu-item-link">
+							ABOUT
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/friendlink" class="menu-item-link">
+							友链
+						</a>
+					</li>
+					
+			</ul>
+		</nav>
+	</div>
+	<i id="homelink" data-link="http://yoursite.com/"></i>
+	<div class="header_bottom">
+		<div class="blog-title">
+			<a href="https://abulin.site" target="_blank" rel="noopener" class="logo">Abulin技术站</a>
+			<div class="descrs">
+				<div class="descr">技术、技能、心理、情感</div>
+				<div class="descr">愿你有勇敢的朋友，有厉害的对手。愿你对过往的一切情深义重，但从不回头。愿你特别美丽，特别平静，特别凶狠，也特别温柔。</div>
+			</div>
+			<div class="blog-down">
+				<a href="javascript:void(0);">
+					<i class="fa fa-angle-double-down fa-2x"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</header>
+
+		<main class="main">
+			<section class="posts">
+	<article class="post_full"> 
+	<h1 class="post-title">
+		<div class="post-title-link">
+			springboot多环境配置profile
+		</div>
+	</h1>
+	
+	<div class="post-info">
+		<div class="post-date">
+				<i class="fa fa-calendar"></i>&nbsp2020-03-18&nbsp&nbsp&nbsp
+		</div>
+		
+				<span class="post-words">
+					<i class="fa fa-pencil-square-o"></i>&nbsp479&nbspwords&nbsp&nbsp
+				</span>
+				<span class="post-time">
+					<i class="fa fa-clock-o"></i>&nbsp2 mins&nbsp&nbsp&nbsp
+				</span>
+		
+		<div class="post-tags">
+			
+    
+        <i class="fa fa-tags"></i>  <a href="/tags/springboot-profile/"> springboot profile</a> <a href="/tags/springboot-多环境/"> springboot 多环境</a>
+    
+		</div>
+	</div>
+	<div class="post-content">
+		<p>我们在开发中和上线后的一些配置参数不同，如：数据库连接</p>
+<p>springboot为我们提供了区分环境配置的方法</p>
+<a id="more"></a>
+
+<h1 id="同一个配置文件不同环境配置"><a href="#同一个配置文件不同环境配置" class="headerlink" title="同一个配置文件不同环境配置"></a>同一个配置文件不同环境配置</h1><p>同一个配置文件<code>application.yml</code>中可以使用<code>---</code>3个杠来区分环境</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">profiles</span><span class="token punctuation">:</span>
+    <span class="token key atrule">active</span><span class="token punctuation">:</span> dev <span class="token comment" spellcheck="true">#默认启动的环境</span>
+
+<span class="token comment" spellcheck="true"># 开发环境配置</span>
+<span class="token punctuation">---</span>
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">profiles</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">myconf</span><span class="token punctuation">:</span>
+  <span class="token key atrule">user</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> 开发<span class="token punctuation">-</span>哈哈
+<span class="token comment" spellcheck="true"># 生产环境配置</span>
+<span class="token punctuation">---</span>
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">profiles</span><span class="token punctuation">:</span> prod
+<span class="token key atrule">myconf</span><span class="token punctuation">:</span>
+  <span class="token key atrule">user</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> 生产<span class="token punctuation">-</span>嘿嘿嘿</code></pre>
+<p>启动类：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ProfileApp</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${myconf.user.name}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String userName<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>ProfileApp<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/name"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">getUserName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> userName<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>启动项目后，查看日志：</p>
+<pre><code>2018-11-23 16:59:53.131  INFO 90732 --- [  restartedMain] com.yimingkeji.profile.ProfileApp        : The following profiles are active: dev #当前的profile是dev</code></pre><p>访问 <a href="http://localhost:8080/name" target="_blank" rel="noopener">http://localhost:8080/name</a></p>
+<pre><code>开发-哈哈</code></pre><p>如果修改启动环境为 prod</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">profiles</span><span class="token punctuation">:</span>
+    <span class="token key atrule">active</span><span class="token punctuation">:</span> prod</code></pre>
+<p>启动后再次访问 <a href="http://localhost:8080/name" target="_blank" rel="noopener">http://localhost:8080/name</a></p>
+<pre><code>生产-嘿嘿嘿</code></pre><h1 id="不同配置文件不同环境"><a href="#不同配置文件不同环境" class="headerlink" title="不同配置文件不同环境"></a>不同配置文件不同环境</h1><p>还可以添加配置文件，以<code>application-环境</code>来命名，如</p>
+<pre><code>application.yml #默认配置
+application-dev.yml # 开发环境配置
+application-prod.yml # 生产环境配置</code></pre><p>application.yml</p>
+<pre><code>server:
+  port: 8080
+spring:
+  profiles:
+    active: dev #默认启动的环境</code></pre><p>application-dev.yml</p>
+<pre><code>myconf:
+  user:
+    address: 杭州市西湖区</code></pre><p>application-prod.yml</p>
+<pre><code>myconf:
+  user:
+    address: 北京北京</code></pre><p>接口：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${myconf.user.address}"</span><span class="token punctuation">)</span>
+<span class="token keyword">private</span> String address<span class="token punctuation">;</span>
+<span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/address"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> String <span class="token function">getAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> address<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>先设置启动环境为dev，启动后访问 <a href="http://localhost:8080/address" target="_blank" rel="noopener">http://localhost:8080/address</a></p>
+<pre><code>杭州市西湖区</code></pre><p>设置环境为prod</p>
+<pre><code>北京北京</code></pre><p>当然，这2种方式可以配合使用。在<code>application.yml</code>中保留之前的配置：</p>
+<pre><code># 开发环境配置
+---
+spring:
+  profiles: dev
+myconf:
+  user:
+    name: 开发-哈哈
+# 生产环境配置
+---
+spring:
+  profiles: prod
+myconf:
+  user:
+    name: 生产-嘿嘿嘿</code></pre><p>修改接口：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${myconf.user.name}"</span><span class="token punctuation">)</span>
+<span class="token keyword">private</span> String userName<span class="token punctuation">;</span>
+<span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${myconf.user.address}"</span><span class="token punctuation">)</span>
+<span class="token keyword">private</span> String address<span class="token punctuation">;</span>
+<span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/user"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> String <span class="token function">user</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">"姓名："</span> <span class="token operator">+</span> userName <span class="token operator">+</span> <span class="token string">", 地址："</span> <span class="token operator">+</span> address<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>环境dev，访问 <a href="http://localhost:8080/user" target="_blank" rel="noopener">http://localhost:8080/user</a></p>
+<pre><code>姓名：开发-哈哈, 地址：杭州市西湖区</code></pre>
+	</div>
+
+	<!--打赏-->
+  <div class="reward">
+   <div class="reward-button">赏 <span class="reward-code">
+    <span class="alipay-code"> <img class="alipay-img wdp-appear" src="/images/reward/zfb.png"><b>支付宝</b> </span>
+    <span class="wechat-code"> <img class="wechat-img wdp-appear" src="/images/reward/wx.png"><b>微信</b> </span>
+   </div>
+   <p class="reward-notice">如果文章对你有帮助，请作者喝杯咖啡吧！</p>
+  </div>
+  <!--打赏-->
+
+	<div class="post-nav">
+		<div class="post-nav-prev">
+			
+				<a href="/2020/03/18/java/framework/springboot/springboot%E6%97%A5%E5%BF%97%E9%85%8D%E7%BD%AElogback/" rel="prev" title="springboot日志配置logback">
+					<i class="fa fa-angle-double-left"></i>&nbspspringboot日志配置logback
+				</a>
+				
+		</div>
+		<div class="post-nav-next">
+					
+						<a href="/2020/03/18/java/framework/springboot/springboot%E9%85%8D%E7%BD%AE-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE-List%E9%85%8D%E7%BD%AE-Map%E9%85%8D%E7%BD%AE-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE/" rel="next" title="springboot配置(自定义配置|List配置|Map配置|读取配置)">
+							springboot配置(自定义配置|List配置|Map配置|读取配置)&nbsp<i class="fa fa-angle-double-right"></i>
+						</a>
+				  	
+			</div>
+			<div class="clear"></div>
+	</div>
+	<div style="text-align:center;">
+  <span id="busuanzi_container_site_pv" style="font-size:14px;margin-right:20px;color:#ccc;">
+      总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv" style="font-size:14px;margin-right:20px;color:#ccc;">
+    访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div>
+
+</article>
+
+<div class="post-toc">
+	<div class="toc-top">
+		Article Catalog
+	</div>
+	<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#同一个配置文件不同环境配置"><span class="toc-text">同一个配置文件不同环境配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#不同配置文件不同环境"><span class="toc-text">不同配置文件不同环境</span></a></li></ol>
+</div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '2dd25deab7cdd74074aa',
+        clientSecret: 'cf52ceb9f4c2fa3a6737c445149fbf55f24e2be5',
+        id: window.location.pathname,
+        repo: 'abulin_comments',
+        owner: 'yangzhenlong',
+        admin: 'yangzhenlong',
+        id: md5(location.pathname)
+    })
+    gitalk.render('gitalk-container')
+</script>
+
+
+
+
+
+
+
+</section>
+
+		</main>
+		<footer class="footer">
+	<div class="footer-info">
+		<p>
+			Copyright © 2019 - 2020 Abulin Blog
+		</p>
+		<p class="a">
+			Powered by <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a> | Theme - <a href="https://github.com/Chorer/hexo-theme-PureBlue" target="_blank" rel="noopener">PureBlue</a>
+		</p> 
+	</div>
+</footer>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script src="/js/navbar.js"></script>
+
+
+<script src="/js/pace.min.js"></script>
+
+
+<script src="/js/code.js"></script>
+
+
+<script src="/js/load.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/post-except.js"></script>
+
+
+	
+<script src="/js/jquery.fancybox.js"></script>
+
+	
+<script src="/js/jquery.fancyboxStart.js"></script>
+
+	
+		
+<script src="/js/toc.js"></script>
+
+		
+<script src="/js/jquery.toTop.js"></script>
+
+	
+
+
+	<script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script>
+	
+<script src="/js/IndexToTop.js"></script>
+
+
+
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</body>	
+</html>	

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scaleable=0" name="viewport">
+	<title>Abulin技术站</title>
+	
+<link rel="stylesheet" href="/css/style.css">
+
+	
+<link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css">
+
+	<link rel="icon" href="/images/abulin.jpg">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?822a3a1cdee727463b24d3ef09c24d4b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+	<body>
+		<header class="header">
+	<div class="header_top">
+		<span class="theme">
+			<a href="/">
+				Abulin 技术站
+			</a>	
+		</span>
+		<nav class="navbar">
+			<ul class="menu">
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/" class="menu-item-link">
+							HOME
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/categories" class="menu-item-link">
+							CATEGORIES
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/archives" class="menu-item-link">
+							ARCHIVES
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/tags" class="menu-item-link">
+							TAGS
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/about" class="menu-item-link">
+							ABOUT
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/friendlink" class="menu-item-link">
+							友链
+						</a>
+					</li>
+					
+			</ul>
+		</nav>
+	</div>
+	<i id="homelink" data-link="http://yoursite.com/"></i>
+	<div class="header_bottom">
+		<div class="blog-title">
+			<a href="https://abulin.site" target="_blank" rel="noopener" class="logo">Abulin技术站</a>
+			<div class="descrs">
+				<div class="descr">技术、技能、心理、情感</div>
+				<div class="descr">愿你有勇敢的朋友，有厉害的对手。愿你对过往的一切情深义重，但从不回头。愿你特别美丽，特别平静，特别凶狠，也特别温柔。</div>
+			</div>
+			<div class="blog-down">
+				<a href="javascript:void(0);">
+					<i class="fa fa-angle-double-down fa-2x"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</header>
+
+		<main class="main">
+			<section class="posts">
+	<article class="post_full"> 
+	<h1 class="post-title">
+		<div class="post-title-link">
+			springboot跨域配置CORS
+		</div>
+	</h1>
+	
+	<div class="post-info">
+		<div class="post-date">
+				<i class="fa fa-calendar"></i>&nbsp2020-03-18&nbsp&nbsp&nbsp
+		</div>
+		
+				<span class="post-words">
+					<i class="fa fa-pencil-square-o"></i>&nbsp1.2k&nbspwords&nbsp&nbsp
+				</span>
+				<span class="post-time">
+					<i class="fa fa-clock-o"></i>&nbsp5 mins&nbsp&nbsp&nbsp
+				</span>
+		
+		<div class="post-tags">
+			
+    
+        <i class="fa fa-tags"></i>  <a href="/tags/springboot/"> springboot</a> <a href="/tags/springboot-跨域/"> springboot 跨域</a> <a href="/tags/springboot-cors/"> springboot cors</a>
+    
+		</div>
+	</div>
+	<div class="post-content">
+		<h1 id="CORS理解"><a href="#CORS理解" class="headerlink" title="CORS理解"></a>CORS理解</h1><pre><code>CORS(Cross-Origin Resource Sharing) 跨域资源共享
+浏览器在访问当前域名下的资源时，能直接传输数据。但是出于安全考虑，浏览器在访问非当前域名的资源时会遇到跨域访问限制
+这时候我们需要一种机制：跨域资源共享（cors）</code></pre><a id="more"></a>
+
+<h1 id="cors的请求类型"><a href="#cors的请求类型" class="headerlink" title="cors的请求类型"></a>cors的请求类型</h1><p>来自 <a href="https://www.cnblogs.com/loveis715/p/4592246.html" target="_blank" rel="noopener">CORS简介(作者 loveis715)</a></p>
+<h2 id="简单请求-Simple-Request"><a href="#简单请求-Simple-Request" class="headerlink" title="简单请求(Simple Request)"></a>简单请求(Simple Request)</h2><pre><code>如果一个请求没有包含任何自定义请求头，而且它所使用HTTP动词是GET，HEAD或POST之一，那么它就是一个Simple Request。但是在使用POST作为请求的动词时，该请求的Content-Type需要是application/x-www-form-urlencoded，multipart/form-data或text/plain之一。</code></pre><h2 id="预检请求-Preflighted-Request"><a href="#预检请求-Preflighted-Request" class="headerlink" title="预检请求(Preflighted Request)"></a>预检请求(Preflighted Request)</h2><pre><code>如果一个请求包含了任何自定义请求头，或者它所使用的HTTP动词是GET，HEAD或POST之外的任何一个动词，那么它就是一个Preflighted Request。如果POST请求的Content-Type并不是application/x-www-form-urlencoded，multipart/form-data或text/plain之一，那么其也是Preflighted Request。</code></pre><h2 id="带凭证的请求-Requests-with-Credential"><a href="#带凭证的请求-Requests-with-Credential" class="headerlink" title="带凭证的请求(Requests with Credential)"></a>带凭证的请求(Requests with Credential)</h2><pre><code>一般情况下，一个跨域请求不会包含当前页面的用户凭证。一旦一个跨域请求包含了当前页面的用户凭证，那么其就属于Requests with Credential。</code></pre><h1 id="springboot的cors支持"><a href="#springboot的cors支持" class="headerlink" title="springboot的cors支持"></a>springboot的cors支持</h1><h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><pre><code>springboot提供api服务(端口8080)，前端通过jquery发送http请求(端口63342)，由于端口不同，会造成跨域访问</code></pre><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>springboot接口</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/api/cors/get"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"cors test get method"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/api/cors/post"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">post</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"cors test post method"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+<p>前端代码：cors.html</p>
+<pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>cors跨域测试<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://cdn.bootcss.com/jquery/2.1.0/jquery.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript">
+        <span class="token keyword">function</span> <span class="token function">crosGet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                type<span class="token punctuation">:</span><span class="token string">'get'</span><span class="token punctuation">,</span>
+                url<span class="token punctuation">:</span><span class="token string">'http://localhost:8080/api/cors/get'</span><span class="token punctuation">,</span>
+                dateType<span class="token punctuation">:</span> <span class="token string">'json'</span><span class="token punctuation">,</span>
+                data<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+                success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#getRes"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token string">'请求成功。'</span> <span class="token operator">+</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                error<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'请求失败：'</span> <span class="token operator">+</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#getRes"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token string">'请求失败！！！'</span> <span class="token operator">+</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">function</span> <span class="token function">crosPost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                type<span class="token punctuation">:</span><span class="token string">'post'</span><span class="token punctuation">,</span>
+                url<span class="token punctuation">:</span><span class="token string">'http://localhost:8080/api/cors/post'</span><span class="token punctuation">,</span>
+                dateType<span class="token punctuation">:</span> <span class="token string">'json'</span><span class="token punctuation">,</span>
+                data<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+                success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#postRes"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token string">'请求成功。'</span> <span class="token operator">+</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                error<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#postRes"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token string">'请求失败！！！'</span> <span class="token operator">+</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>crosGet()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>get跨域测试<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>getRes<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">width</span><span class="token punctuation">:</span><span class="token number">80%</span><span class="token punctuation">;</span><span class="token property">height</span><span class="token punctuation">:</span><span class="token number">50</span>px<span class="token punctuation">;</span><span class="token property">background-color</span><span class="token punctuation">:</span><span class="token hexcode">#ccc</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>hr</span><span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>crosPost()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>post跨域测试<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>postRes<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">width</span><span class="token punctuation">:</span><span class="token number">80%</span><span class="token punctuation">;</span><span class="token property">height</span><span class="token punctuation">:</span><span class="token number">50</span>px<span class="token punctuation">;</span><span class="token property">background-color</span><span class="token punctuation">:</span><span class="token hexcode">#ccc</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>前端代码cors.html可以放到tomcat或者nginx中，这里直接使用idea的<code>open in Browser</code>打开，默认端口为63342</p>
+<p><img src="https://oscimg.oschina.net/oscnet/988641f47a40ddf276446d797d2c40c2dd9.jpg" alt=""></p>
+<p><img src="https://oscimg.oschina.net/oscnet/bafd0e862fc1795ed5e5deb0e9e8fb12654.jpg" alt=""></p>
+<h2 id="不允许非当前域名访问错误"><a href="#不允许非当前域名访问错误" class="headerlink" title="不允许非当前域名访问错误"></a>不允许非当前域名访问错误</h2><p>启动sprinboot后，点击前端按钮测试，会返回错误：</p>
+<pre><code>Access to XMLHttpRequest at &#39;http://localhost:8080/api/cors/get&#39; from origin &#39;http://localhost:63342&#39; has been blocked by CORS policy: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource.
+当前域名：http://localhost:63342
+要访问的域名：http://localhost:8080
+错误原因：发生了跨域访问，服务端(8080)未允许该域名(63342)进行访问</code></pre><p><img src="https://oscimg.oschina.net/oscnet/f95f0f00c16568a5194ff7c38652d0df181.jpg" alt=""></p>
+<h2 id="添加cors支持，允许域名访问"><a href="#添加cors支持，允许域名访问" class="headerlink" title="添加cors支持，允许域名访问"></a>添加cors支持，允许域名访问</h2><p>springboot中，添加cors支持的配置：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CorsConfig</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> WebMvcConfigurer <span class="token function">corsConfigurer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">WebMvcConfigurer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addCorsMappings</span><span class="token punctuation">(</span>CorsRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                registry<span class="token punctuation">.</span><span class="token function">addMapping</span><span class="token punctuation">(</span><span class="token string">"/api/**"</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">.</span><span class="token function">allowedOrigins</span><span class="token punctuation">(</span><span class="token string">"http://localhost:63342"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//允许域名访问，如果*，代表所有域名</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>再次测试，成功</p>
+<p><img src="https://oscimg.oschina.net/oscnet/5284efa43ef7493dab37b16f68dfd1c76b9.jpg" alt=""></p>
+<h2 id="header跨域限制"><a href="#header跨域限制" class="headerlink" title="header跨域限制"></a>header跨域限制</h2><p>修改配置，只允许header中带<code>Authorization</code>或者<code>Token</code>的请求访问</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CorsConfig</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> WebMvcConfigurer <span class="token function">corsConfigurer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">WebMvcConfigurer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addCorsMappings</span><span class="token punctuation">(</span>CorsRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                registry<span class="token punctuation">.</span><span class="token function">addMapping</span><span class="token punctuation">(</span><span class="token string">"/api/**"</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">.</span><span class="token function">allowedHeaders</span><span class="token punctuation">(</span><span class="token string">"Authorization"</span><span class="token punctuation">,</span> <span class="token string">"Token"</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//允许的头信息</span>
+                        <span class="token punctuation">.</span><span class="token function">allowedOrigins</span><span class="token punctuation">(</span><span class="token string">"http://localhost:63342"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>修改html中，post接口header带<code>Authorization</code>，get接口header带<code>aaa</code></p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">crosGet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                type<span class="token punctuation">:</span><span class="token string">'get'</span><span class="token punctuation">,</span>
+                url<span class="token punctuation">:</span><span class="token string">'http://localhost:8080/api/cors/get'</span><span class="token punctuation">,</span>
+                dateType<span class="token punctuation">:</span> <span class="token string">'json'</span><span class="token punctuation">,</span>
+                data<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+                headers<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token string">'aaa'</span><span class="token punctuation">:</span><span class="token string">'Basic 123456'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+                success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#getRes"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token string">'请求成功。'</span> <span class="token operator">+</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                error<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'请求失败：'</span> <span class="token operator">+</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#getRes"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token string">'请求失败！！！'</span> <span class="token operator">+</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">crosPost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                type<span class="token punctuation">:</span><span class="token string">'post'</span><span class="token punctuation">,</span>
+                url<span class="token punctuation">:</span><span class="token string">'http://localhost:8080/api/cors/post'</span><span class="token punctuation">,</span>
+                dateType<span class="token punctuation">:</span> <span class="token string">'json'</span><span class="token punctuation">,</span>
+                data<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token comment" spellcheck="true">//headers:{'Authorization':'Basic 123456'},//带头信息方式1</span>
+                beforeSend<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    xhr<span class="token punctuation">.</span><span class="token function">setRequestHeader</span><span class="token punctuation">(</span><span class="token string">'Authorization'</span><span class="token punctuation">,</span><span class="token string">'Basic 123456'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//带头信息方式2</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#postRes"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token string">'请求成功。'</span> <span class="token operator">+</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                error<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'请求失败：'</span> <span class="token operator">+</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#postRes"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token string">'请求失败！！！'</span> <span class="token operator">+</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span></code></pre>
+<p>测试，get访问失败，post成功</p>
+<p><img src="https://oscimg.oschina.net/oscnet/552917def94853a52d176c030d196fa9f62.jpg" alt=""></p>
+<h2 id="请求方式限制"><a href="#请求方式限制" class="headerlink" title="请求方式限制"></a>请求方式限制</h2><p>修改配置，只支持post方式访问：</p>
+<pre><code>@Configuration
+public class CorsConfig {
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping(&quot;/api/**&quot;)
+                        .allowedHeaders(&quot;Authorization&quot;, &quot;Token&quot;)
+                        .allowedMethods(&quot;POST&quot;)//只允许post方式
+                        .allowedOrigins(&quot;http://localhost:63342&quot;);
+            }
+        };
+    }
+}</code></pre><p>测试，get访问失败，post成功</p>
+<p><img src="https://oscimg.oschina.net/oscnet/9de4efa775308bbbc47e9a8012b94981189.jpg" alt=""></p>
+<p>配置get和post都允许，则都访问成功</p>
+<pre class=" language-java"><code class="language-java">egistry<span class="token punctuation">.</span><span class="token function">addMapping</span><span class="token punctuation">(</span><span class="token string">"/api/**"</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">.</span><span class="token function">allowedMethods</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"POST"</span><span class="token punctuation">)</span></code></pre>
+<p><img src="https://oscimg.oschina.net/oscnet/172f362b52fc5280a637513330cdfa28478.jpg" alt=""></p>
+<h1 id="局部跨域设置"><a href="#局部跨域设置" class="headerlink" title="局部跨域设置"></a>局部跨域设置</h1><p>上面是配置了全局的跨域访问，也可以配置局部访问控制</p>
+<p>类上面注解@CrossOrigin</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@CrossOrigin</span><span class="token punctuation">(</span>origins <span class="token operator">=</span> <span class="token string">"http://domain.com"</span><span class="token punctuation">,</span> allowedHeaders <span class="token operator">=</span> <span class="token string">"token"</span><span class="token punctuation">,</span> methods <span class="token operator">=</span> <span class="token punctuation">{</span>RequestMethod<span class="token punctuation">.</span>GET<span class="token punctuation">,</span> RequestMethod<span class="token punctuation">.</span>POST<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestResource</span><span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span></code></pre>
+<p>方法上面的@CrossOrigin</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestResource</span><span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@CrossOrigin</span><span class="token punctuation">(</span>origins <span class="token operator">=</span> <span class="token string">"http://domain.com"</span><span class="token punctuation">,</span> allowedHeaders <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"header1"</span><span class="token punctuation">,</span> <span class="token string">"header2"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/api/test"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"test"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h1 id="CORS参考文档"><a href="#CORS参考文档" class="headerlink" title="CORS参考文档"></a>CORS参考文档</h1><p><a href="https://www.cnblogs.com/loveis715/p/4592246.html" target="_blank" rel="noopener">CORS简介(作者 loveis715)</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="noopener">moz技术文档 HTTP访问控制(CORS)</a></p>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-cors" target="_blank" rel="noopener">springboot官方文档</a></p>
+<h1 id="源码地址"><a href="#源码地址" class="headerlink" title="源码地址"></a>源码地址</h1><p><a href="https://gitee.com/yimingkeji/springboot/tree/master/cors" target="_blank" rel="noopener">https://gitee.com/yimingkeji/springboot/tree/master/cors</a></p>
+
+	</div>
+
+	<!--打赏-->
+  <div class="reward">
+   <div class="reward-button">赏 <span class="reward-code">
+    <span class="alipay-code"> <img class="alipay-img wdp-appear" src="/images/reward/zfb.png"><b>支付宝</b> </span>
+    <span class="wechat-code"> <img class="wechat-img wdp-appear" src="/images/reward/wx.png"><b>微信</b> </span>
+   </div>
+   <p class="reward-notice">如果文章对你有帮助，请作者喝杯咖啡吧！</p>
+  </div>
+  <!--打赏-->
+
+	<div class="post-nav">
+		<div class="post-nav-prev">
+			
+				<a href="/2020/03/18/java/framework/springdata/spring-data-jpa%E4%BD%BF%E7%94%A8/" rel="prev" title="spring-data-jpa使用">
+					<i class="fa fa-angle-double-left"></i>&nbspspring-data-jpa使用
+				</a>
+				
+		</div>
+		<div class="post-nav-next">
+					
+						<a href="/2020/03/18/java/framework/springboot/springboot%E6%97%A5%E5%BF%97%E9%85%8D%E7%BD%AElogback/" rel="next" title="springboot日志配置logback">
+							springboot日志配置logback&nbsp<i class="fa fa-angle-double-right"></i>
+						</a>
+				  	
+			</div>
+			<div class="clear"></div>
+	</div>
+	<div style="text-align:center;">
+  <span id="busuanzi_container_site_pv" style="font-size:14px;margin-right:20px;color:#ccc;">
+      总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv" style="font-size:14px;margin-right:20px;color:#ccc;">
+    访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div>
+
+</article>
+
+<div class="post-toc">
+	<div class="toc-top">
+		Article Catalog
+	</div>
+	<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CORS理解"><span class="toc-text">CORS理解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cors的请求类型"><span class="toc-text">cors的请求类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单请求-Simple-Request"><span class="toc-text">简单请求(Simple Request)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预检请求-Preflighted-Request"><span class="toc-text">预检请求(Preflighted Request)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#带凭证的请求-Requests-with-Credential"><span class="toc-text">带凭证的请求(Requests with Credential)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#springboot的cors支持"><span class="toc-text">springboot的cors支持</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不允许非当前域名访问错误"><span class="toc-text">不允许非当前域名访问错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加cors支持，允许域名访问"><span class="toc-text">添加cors支持，允许域名访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#header跨域限制"><span class="toc-text">header跨域限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#请求方式限制"><span class="toc-text">请求方式限制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#局部跨域设置"><span class="toc-text">局部跨域设置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CORS参考文档"><span class="toc-text">CORS参考文档</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#源码地址"><span class="toc-text">源码地址</span></a></li></ol>
+</div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '2dd25deab7cdd74074aa',
+        clientSecret: 'cf52ceb9f4c2fa3a6737c445149fbf55f24e2be5',
+        id: window.location.pathname,
+        repo: 'abulin_comments',
+        owner: 'yangzhenlong',
+        admin: 'yangzhenlong',
+        id: md5(location.pathname)
+    })
+    gitalk.render('gitalk-container')
+</script>
+
+
+
+
+
+
+
+</section>
+
+		</main>
+		<footer class="footer">
+	<div class="footer-info">
+		<p>
+			Copyright © 2019 - 2020 Abulin Blog
+		</p>
+		<p class="a">
+			Powered by <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a> | Theme - <a href="https://github.com/Chorer/hexo-theme-PureBlue" target="_blank" rel="noopener">PureBlue</a>
+		</p> 
+	</div>
+</footer>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script src="/js/navbar.js"></script>
+
+
+<script src="/js/pace.min.js"></script>
+
+
+<script src="/js/code.js"></script>
+
+
+<script src="/js/load.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/post-except.js"></script>
+
+
+	
+<script src="/js/jquery.fancybox.js"></script>
+
+	
+<script src="/js/jquery.fancyboxStart.js"></script>
+
+	
+		
+<script src="/js/toc.js"></script>
+
+		
+<script src="/js/jquery.toTop.js"></script>
+
+	
+
+
+	<script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script>
+	
+<script src="/js/IndexToTop.js"></script>
+
+
+
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</body>	
+</html>	

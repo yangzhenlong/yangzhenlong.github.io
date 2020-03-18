@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scaleable=0" name="viewport">
+	<title>Abulin技术站</title>
+	
+<link rel="stylesheet" href="/css/style.css">
+
+	
+<link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css">
+
+	<link rel="icon" href="/images/abulin.jpg">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?822a3a1cdee727463b24d3ef09c24d4b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+	<body>
+		<header class="header">
+	<div class="header_top">
+		<span class="theme">
+			<a href="/">
+				Abulin 技术站
+			</a>	
+		</span>
+		<nav class="navbar">
+			<ul class="menu">
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/" class="menu-item-link">
+							HOME
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/categories" class="menu-item-link">
+							CATEGORIES
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/archives" class="menu-item-link">
+							ARCHIVES
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/tags" class="menu-item-link">
+							TAGS
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/about" class="menu-item-link">
+							ABOUT
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/friendlink" class="menu-item-link">
+							友链
+						</a>
+					</li>
+					
+			</ul>
+		</nav>
+	</div>
+	<i id="homelink" data-link="http://yoursite.com/"></i>
+	<div class="header_bottom">
+		<div class="blog-title">
+			<a href="https://abulin.site" target="_blank" rel="noopener" class="logo">Abulin技术站</a>
+			<div class="descrs">
+				<div class="descr">技术、技能、心理、情感</div>
+				<div class="descr">愿你有勇敢的朋友，有厉害的对手。愿你对过往的一切情深义重，但从不回头。愿你特别美丽，特别平静，特别凶狠，也特别温柔。</div>
+			</div>
+			<div class="blog-down">
+				<a href="javascript:void(0);">
+					<i class="fa fa-angle-double-down fa-2x"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</header>
+
+		<main class="main">
+			<section class="posts">
+	<article class="post_full"> 
+	<h1 class="post-title">
+		<div class="post-title-link">
+			springboot三种启动方式(main方法启动|jar包启动|mvn启动)
+		</div>
+	</h1>
+	
+	<div class="post-info">
+		<div class="post-date">
+				<i class="fa fa-calendar"></i>&nbsp2020-03-18&nbsp&nbsp&nbsp
+		</div>
+		
+				<span class="post-words">
+					<i class="fa fa-pencil-square-o"></i>&nbsp1.1k&nbspwords&nbsp&nbsp
+				</span>
+				<span class="post-time">
+					<i class="fa fa-clock-o"></i>&nbsp6 mins&nbsp&nbsp&nbsp
+				</span>
+		
+		<div class="post-tags">
+			
+    
+        <i class="fa fa-tags"></i>  <a href="/tags/springboot/"> springboot</a> <a href="/tags/springboot启动/"> springboot启动</a>
+    
+		</div>
+	</div>
+	<div class="post-content">
+		<p> <a href="https://my.oschina.net/yimingkeji/blog/2885473" target="_blank" rel="noopener">原文链接</a></p>
+<ul>
+<li>原文也是笔者所写，从 oschain 迁移至此处</li>
+</ul>
+<blockquote>
+<p>springboot 版本：2.1.0.RELEASE</p>
+</blockquote>
+<h1 id="springboot官方文档"><a href="#springboot官方文档" class="headerlink" title="springboot官方文档"></a>springboot官方文档</h1><p><a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#_working_with_spring_boot" target="_blank" rel="noopener">https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#_working_with_spring_boot</a></p>
+<a id="more"></a>
+
+<h1 id="maven依赖"><a href="#maven依赖" class="headerlink" title="maven依赖"></a>maven依赖</h1><p>spring-boot-starter-parent</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>modelVersion</span><span class="token punctuation">></span></span>4.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>modelVersion</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.example<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>myproject<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.0.1-SNAPSHOT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>parent</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-parent<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.1.0.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>parent</span><span class="token punctuation">></span></span>
+
+    <span class="token comment" spellcheck="true">&lt;!-- Additional lines to be added here... --></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">></span></span></code></pre>
+<p>web依赖</p>
+<pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre><h1 id="启动类和接口"><a href="#启动类和接口" class="headerlink" title="启动类和接口"></a>启动类和接口</h1><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token annotation punctuation">@EnableAutoConfiguration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorldApp</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span>
+    String <span class="token function">home</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"Hello World!"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>HelloWorldApp<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="注解解释"><a href="#注解解释" class="headerlink" title="注解解释"></a>注解解释</h2><h3 id="RestController"><a href="#RestController" class="headerlink" title="@RestController"></a>@RestController</h3><p>@RestController = <a href="https://my.oschina.net/u/1774615" target="_blank" rel="noopener">@Controller</a> + @ResponseBody</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token punctuation">{</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token annotation punctuation">@Controller</span> <span class="token comment" spellcheck="true">//springmvc的注解</span>
+<span class="token annotation punctuation">@ResponseBody</span> <span class="token comment" spellcheck="true">//springmvc的注解</span>
+<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">RestController</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@AliasFor</span><span class="token punctuation">(</span>
+        annotation <span class="token operator">=</span> Controller<span class="token punctuation">.</span><span class="token keyword">class</span>
+    <span class="token punctuation">)</span>
+    String <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">""</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>官方文档解释</p>
+<pre><code>The @RestController and @RequestMapping annotations are Spring MVC annotations. (They are not specific to Spring Boot.)
+解释： @RestController 和 @RequestMapping 是springmvc的注解，没什么特殊性</code></pre><h3 id="EnableAutoConfiguration"><a href="#EnableAutoConfiguration" class="headerlink" title="@EnableAutoConfiguration"></a>@EnableAutoConfiguration</h3><pre><code>This annotation tells Spring Boot to “guess” how you want to configure Spring, based on the jar dependencies that you have added. Since spring-boot-starter-web added Tomcat and Spring MVC, the auto-configuration assumes that you are developing a web application and sets up Spring accordingly.
+@EnableAutoConfiguration 猜测地给开发者配置好有关springmvc、tomcat、spring方面的配置。也就是会自动配置好springmvc、tomcat、spring的一些配置</code></pre><h1 id="启动服务和访问接口"><a href="#启动服务和访问接口" class="headerlink" title="启动服务和访问接口"></a>启动服务和访问接口</h1><p>启动main方法，控制台打印：</p>
+<pre><code>  .   ____          _            __ _ _
+ /\\ / ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | &#39;_ | &#39;_| | &#39;_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  &#39;  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.0.RELEASE)
+
+2018-11-21 15:03:33.622  INFO 75693 --- [           main] com.yimingkeji.helloworld.HelloWorldApp  : Starting HelloWorldApp on yangzhenlongdeMacBook-Pro.local with PID 75693 (/Users/yangzhenlong/projs/my/yimingkeji/springboot/helloword/target/classes started by yangzhenlong in /Users/yangzhenlong/projs/my/yimingkeji/springboot)
+2018-11-21 15:03:33.626  INFO 75693 --- [           main] com.yimingkeji.helloworld.HelloWorldApp  : No active profile set, falling back to default profiles: default
+2018-11-21 15:03:34.499  INFO 75693 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2018-11-21 15:03:34.516  INFO 75693 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-11-21 15:03:34.516  INFO 75693 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-11-21 15:03:34.522  INFO 75693 --- [           main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/yangzhenlong/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-11-21 15:03:34.581  INFO 75693 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-11-21 15:03:34.582  INFO 75693 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 917 ms
+2018-11-21 15:03:34.604  INFO 75693 --- [           main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-11-21 15:03:34.607  INFO 75693 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: &#39;characterEncodingFilter&#39; to: [/*]
+2018-11-21 15:03:34.608  INFO 75693 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: &#39;hiddenHttpMethodFilter&#39; to: [/*]
+2018-11-21 15:03:34.608  INFO 75693 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: &#39;formContentFilter&#39; to: [/*]
+2018-11-21 15:03:34.608  INFO 75693 --- [           main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: &#39;requestContextFilter&#39; to: [/*]
+2018-11-21 15:03:34.763  INFO 75693 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService &#39;applicationTaskExecutor&#39;
+2018-11-21 15:03:34.933  INFO 75693 --- [           main]
+o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path &#39;&#39;
+2018-11-21 15:03:34.936  INFO 75693 --- [           main] com.yimingkeji.helloworld.HelloWorldApp  : Started HelloWorldApp in 1.727 seconds (JVM running for 2.849)</code></pre><p>日志中看到 项目启动端口(prot)为8080，启动根路径(path)为’ ‘</p>
+<p>浏览器或者http客户端（如postman）访问 localhost:8080 </p>
+<pre><code>Hello World!</code></pre><h1 id="使用jar包启动"><a href="#使用jar包启动" class="headerlink" title="使用jar包启动"></a>使用jar包启动</h1><p>在pom.xml依赖中添加spring-boot-maven-plugin插件</p>
+<pre><code>&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;</code></pre><p>在终端shell或者Terminal中执行命令：</p>
+<pre><code>$ mvn package</code></pre><p>在项目target目录下会生成jar包：<br><img src="https://oscimg.oschina.net/oscnet/d2b6f6876787b5029376702ce7f4bd18de1.jpg" alt=""></p>
+<p>启动jar包</p>
+<pre><code>$ java -jar target/helloword-1.0.0-SNAPSHOT.jar 
+2018-11-21 15:12:35.077  INFO 75841 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService &#39;applicationTaskExecutor&#39;
+2018-11-21 15:12:35.355  INFO 75841 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path &#39;&#39;
+2018-11-21 15:12:35.359  INFO 75841 --- [           main] com.yimingkeji.helloworld.HelloWorldApp  : Started HelloWorldApp in 2.382 seconds (JVM running for 2.838)</code></pre><p>访问 localhost:8080</p>
+<pre><code>Hello World!</code></pre><p>按 Ctrl + C 结束服务。</p>
+<h1 id="使用mvn启动"><a href="#使用mvn启动" class="headerlink" title="使用mvn启动"></a>使用mvn启动</h1><pre><code>$ mvn spring-boot:run</code></pre><h1 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h1><p><a href="https://gitee.com/yimingkeji/springboot" target="_blank" rel="noopener">https://gitee.com/yimingkeji/springboot</a></p>
+
+	</div>
+
+	<!--打赏-->
+  <div class="reward">
+   <div class="reward-button">赏 <span class="reward-code">
+    <span class="alipay-code"> <img class="alipay-img wdp-appear" src="/images/reward/zfb.png"><b>支付宝</b> </span>
+    <span class="wechat-code"> <img class="wechat-img wdp-appear" src="/images/reward/wx.png"><b>微信</b> </span>
+   </div>
+   <p class="reward-notice">如果文章对你有帮助，请作者喝杯咖啡吧！</p>
+  </div>
+  <!--打赏-->
+
+	<div class="post-nav">
+		<div class="post-nav-prev">
+			
+				<a href="/2020/03/18/java/framework/springboot/springboot%E9%85%8D%E7%BD%AE-%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE-List%E9%85%8D%E7%BD%AE-Map%E9%85%8D%E7%BD%AE-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE/" rel="prev" title="springboot配置(自定义配置|List配置|Map配置|读取配置)">
+					<i class="fa fa-angle-double-left"></i>&nbspspringboot配置(自定义配置|List配置|Map配置|读取配置)
+				</a>
+				
+		</div>
+		<div class="post-nav-next">
+					
+						<a href="/2020/03/18/java/framework/springboot/springboot%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/" rel="next" title="springboot学习资料整理">
+							springboot学习资料整理&nbsp<i class="fa fa-angle-double-right"></i>
+						</a>
+				  	
+			</div>
+			<div class="clear"></div>
+	</div>
+	<div style="text-align:center;">
+  <span id="busuanzi_container_site_pv" style="font-size:14px;margin-right:20px;color:#ccc;">
+      总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv" style="font-size:14px;margin-right:20px;color:#ccc;">
+    访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div>
+
+</article>
+
+<div class="post-toc">
+	<div class="toc-top">
+		Article Catalog
+	</div>
+	<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#springboot官方文档"><span class="toc-text">springboot官方文档</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#maven依赖"><span class="toc-text">maven依赖</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#启动类和接口"><span class="toc-text">启动类和接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#注解解释"><span class="toc-text">注解解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RestController"><span class="toc-text">@RestController</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EnableAutoConfiguration"><span class="toc-text">@EnableAutoConfiguration</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#启动服务和访问接口"><span class="toc-text">启动服务和访问接口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用jar包启动"><span class="toc-text">使用jar包启动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用mvn启动"><span class="toc-text">使用mvn启动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#项目地址"><span class="toc-text">项目地址</span></a></li></ol>
+</div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '2dd25deab7cdd74074aa',
+        clientSecret: 'cf52ceb9f4c2fa3a6737c445149fbf55f24e2be5',
+        id: window.location.pathname,
+        repo: 'abulin_comments',
+        owner: 'yangzhenlong',
+        admin: 'yangzhenlong',
+        id: md5(location.pathname)
+    })
+    gitalk.render('gitalk-container')
+</script>
+
+
+
+
+
+
+
+</section>
+
+		</main>
+		<footer class="footer">
+	<div class="footer-info">
+		<p>
+			Copyright © 2019 - 2020 Abulin Blog
+		</p>
+		<p class="a">
+			Powered by <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a> | Theme - <a href="https://github.com/Chorer/hexo-theme-PureBlue" target="_blank" rel="noopener">PureBlue</a>
+		</p> 
+	</div>
+</footer>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script src="/js/navbar.js"></script>
+
+
+<script src="/js/pace.min.js"></script>
+
+
+<script src="/js/code.js"></script>
+
+
+<script src="/js/load.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/post-except.js"></script>
+
+
+	
+<script src="/js/jquery.fancybox.js"></script>
+
+	
+<script src="/js/jquery.fancyboxStart.js"></script>
+
+	
+		
+<script src="/js/toc.js"></script>
+
+		
+<script src="/js/jquery.toTop.js"></script>
+
+	
+
+
+	<script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script>
+	
+<script src="/js/IndexToTop.js"></script>
+
+
+
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</body>	
+</html>	

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scaleable=0" name="viewport">
+	<title>Abulin技术站</title>
+	
+<link rel="stylesheet" href="/css/style.css">
+
+	
+<link rel="stylesheet" href="/css/third%20party/jquery.fancybox.css">
+
+	<link rel="icon" href="/images/abulin.jpg">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?822a3a1cdee727463b24d3ef09c24d4b";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+	<body>
+		<header class="header">
+	<div class="header_top">
+		<span class="theme">
+			<a href="/">
+				Abulin 技术站
+			</a>	
+		</span>
+		<nav class="navbar">
+			<ul class="menu">
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/" class="menu-item-link">
+							HOME
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/categories" class="menu-item-link">
+							CATEGORIES
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/archives" class="menu-item-link">
+							ARCHIVES
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/tags" class="menu-item-link">
+							TAGS
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/about" class="menu-item-link">
+							ABOUT
+						</a>
+					</li>
+				
+					<li class="menu-item">
+						<i class="fa fa-"></i>
+						<a href="/friendlink" class="menu-item-link">
+							友链
+						</a>
+					</li>
+					
+			</ul>
+		</nav>
+	</div>
+	<i id="homelink" data-link="http://yoursite.com/"></i>
+	<div class="header_bottom">
+		<div class="blog-title">
+			<a href="https://abulin.site" target="_blank" rel="noopener" class="logo">Abulin技术站</a>
+			<div class="descrs">
+				<div class="descr">技术、技能、心理、情感</div>
+				<div class="descr">愿你有勇敢的朋友，有厉害的对手。愿你对过往的一切情深义重，但从不回头。愿你特别美丽，特别平静，特别凶狠，也特别温柔。</div>
+			</div>
+			<div class="blog-down">
+				<a href="javascript:void(0);">
+					<i class="fa fa-angle-double-down fa-2x"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</header>
+
+		<main class="main">
+			<section class="posts">
+	<article class="post_full"> 
+	<h1 class="post-title">
+		<div class="post-title-link">
+			spring-data-jpa使用
+		</div>
+	</h1>
+	
+	<div class="post-info">
+		<div class="post-date">
+				<i class="fa fa-calendar"></i>&nbsp2020-03-18&nbsp&nbsp&nbsp
+		</div>
+		
+				<span class="post-words">
+					<i class="fa fa-pencil-square-o"></i>&nbsp1.1k&nbspwords&nbsp&nbsp
+				</span>
+				<span class="post-time">
+					<i class="fa fa-clock-o"></i>&nbsp6 mins&nbsp&nbsp&nbsp
+				</span>
+		
+		<div class="post-tags">
+			
+    
+        <i class="fa fa-tags"></i>  <a href="/tags/jpa/"> jpa</a> <a href="/tags/spring-data-jpa/"> spring-data-jpa</a>
+    
+		</div>
+	</div>
+	<div class="post-content">
+		<pre><code>JPA(Java Persistence API)是一种对象关系映射的ORM框架，springboot-jpa可以用简单的配置来完成一些常规的数据库crud操作</code></pre><p>文档：<a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/" target="_blank" rel="noopener">https://docs.spring.io/spring-data/jpa/docs/current/reference/html/</a></p>
+<a id="more"></a>
+
+<h1 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h1><p>依赖</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>parent</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-parent<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.1.0.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>parent</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-web<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.projectlombok<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>lombok<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.16.14<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>provided<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!--开发工具--></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-devtools<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>optional</span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>optional</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-data-jpa<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>mysql<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mysql-connector-java<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span></code></pre>
+<p>配置</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> jdbc<span class="token punctuation">:</span>mysql<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span>3306/test<span class="token punctuation">?</span>useUnicode=true<span class="token important">&amp;characterEncoding</span>=utf<span class="token punctuation">-</span><span class="token number">8</span>
+    <span class="token key atrule">username</span><span class="token punctuation">:</span> root
+    <span class="token key atrule">password</span><span class="token punctuation">:</span> root
+    <span class="token key atrule">driver-class-name</span><span class="token punctuation">:</span> com.mysql.cj.jdbc.Driver <span class="token comment" spellcheck="true"># mysql8推荐使用cj.jdbc， com.mysql.jdbc.Driver不推荐使用了</span>
+    <span class="token comment" spellcheck="true">#数据库连接池默认使用 tomcat-jdbc</span>
+    <span class="token key atrule">tomcat</span><span class="token punctuation">:</span>
+      <span class="token key atrule">max-idle</span><span class="token punctuation">:</span> <span class="token number">10</span>
+      <span class="token key atrule">min-idle</span><span class="token punctuation">:</span> <span class="token number">1</span>
+      <span class="token key atrule">initial-size</span><span class="token punctuation">:</span> <span class="token number">1</span>
+  <span class="token key atrule">jpa</span><span class="token punctuation">:</span>
+    <span class="token key atrule">database</span><span class="token punctuation">:</span> MYSQL
+    <span class="token key atrule">show-sql</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">hibernate</span><span class="token punctuation">:</span>
+      <span class="token key atrule">ddl-auto</span><span class="token punctuation">:</span> update</code></pre>
+<p>实体</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
+<span class="token annotation punctuation">@Entity</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"user"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Id</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"phone_number"</span><span class="token punctuation">,</span> unique <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String phoneNumber<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"create_time"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@DateTimeFormat</span><span class="token punctuation">(</span>pattern <span class="token operator">=</span> <span class="token string">"yyyy-MM-dd HH:mm:ss"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> Date createTime <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>dao</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserRepository</span> <span class="token keyword">extends</span> <span class="token class-name">JpaRepository</span><span class="token operator">&lt;</span>User<span class="token punctuation">,</span> Integer<span class="token operator">></span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre>
+<p>rest接口</p>
+<pre><code>@RestController
+@RequestMapping(&quot;/user&quot;)
+public class UserResource {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping(&quot;&quot;)
+    public List&lt;User&gt; list(){
+        return userRepository.findAll();
+    }
+
+    @PostMapping(&quot;&quot;)
+    public User add(@RequestBody User user){
+        return userRepository.save(user);
+    }
+}</code></pre><p>启动类</p>
+<pre><code>@SpringBootApplication
+public class MysqlApp {
+    public static void main(String[] args) {
+        SpringApplication.run(MysqlApp.class, args);
+    }
+}</code></pre><p>启动app后，使用rest工具如postman来测试。</p>
+<pre><code>POST http://localhost:8080/user
+---
+request body:
+{
+    &quot;name&quot;:&quot;六六六&quot;,
+    &quot;phoneNumber&quot;:&quot;15500000006&quot;
+}
+---
+response:
+{
+    &quot;id&quot;: 0,
+    &quot;name&quot;: &quot;六六六&quot;,
+    &quot;phoneNumber&quot;: &quot;15500000006&quot;,
+    &quot;createTime&quot;: &quot;2018-12-02T01:34:41.382+0000&quot;
+}</code></pre><pre><code>GET http://localhost:8080/user
+---
+[
+    {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;张三&quot;,
+        &quot;phoneNumber&quot;: &quot;15500000001&quot;,
+        &quot;createTime&quot;: &quot;2018-12-01T13:04:53.000+0000&quot;
+    },
+    {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;李四&quot;,
+        &quot;phoneNumber&quot;: &quot;15500000002&quot;,
+        &quot;createTime&quot;: &quot;2018-12-01T13:04:56.000+0000&quot;
+    },
+    {
+        &quot;id&quot;: 3,
+        &quot;name&quot;: &quot;王五&quot;,
+        &quot;phoneNumber&quot;: &quot;15500000003&quot;,
+        &quot;createTime&quot;: &quot;2018-12-01T13:05:02.000+0000&quot;
+    },
+    {
+        &quot;id&quot;: 5,
+        &quot;name&quot;: &quot;六六六&quot;,
+        &quot;phoneNumber&quot;: &quot;15500000006&quot;,
+        &quot;createTime&quot;: &quot;2018-12-02T01:34:41.000+0000&quot;
+    }
+]</code></pre><h1 id="JPA常用查询方法"><a href="#JPA常用查询方法" class="headerlink" title="JPA常用查询方法"></a>JPA常用查询方法</h1><h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>举例</th>
+<th>对应JPQL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>And</td>
+<td>findByLastnameAndFirstname</td>
+</tr>
+<tr>
+<td></td>
+<td>Or</td>
+<td>findByLastnameOrFirstname</td>
+</tr>
+<tr>
+<td></td>
+<td>Is,Equals</td>
+<td>findByFirstname,findByFirstnameIs,findByFirstnameEquals</td>
+</tr>
+<tr>
+<td></td>
+<td>Between</td>
+<td>findByStartDateBetween</td>
+</tr>
+<tr>
+<td></td>
+<td>LessThan</td>
+<td>findByAgeLessThan</td>
+</tr>
+<tr>
+<td></td>
+<td>LessThanEqual</td>
+<td>findByAgeLessThanEqual</td>
+</tr>
+<tr>
+<td></td>
+<td>GreaterThan</td>
+<td>findByAgeGreaterThan</td>
+</tr>
+<tr>
+<td></td>
+<td>GreaterThanEqual</td>
+<td>findByAgeGreaterThanEqual</td>
+</tr>
+<tr>
+<td></td>
+<td>After</td>
+<td>findByStartDateAfter</td>
+</tr>
+<tr>
+<td></td>
+<td>Before</td>
+<td>findByStartDateBefore</td>
+</tr>
+<tr>
+<td></td>
+<td>IsNull</td>
+<td>findByAgeIsNull</td>
+</tr>
+<tr>
+<td></td>
+<td>IsNotNull,NotNull</td>
+<td>findByAge(Is)NotNull</td>
+</tr>
+<tr>
+<td></td>
+<td>Like</td>
+<td>findByFirstnameLike</td>
+</tr>
+<tr>
+<td></td>
+<td>NotLike</td>
+<td>findByFirstnameNotLike</td>
+</tr>
+<tr>
+<td></td>
+<td>StartingWith</td>
+<td>findByFirstnameStartingWith</td>
+</tr>
+<tr>
+<td></td>
+<td>EndingWith</td>
+<td>findByFirstnameEndingWith</td>
+</tr>
+<tr>
+<td></td>
+<td>Containing</td>
+<td>findByFirstnameContaining</td>
+</tr>
+<tr>
+<td></td>
+<td>OrderBy</td>
+<td>findByAgeOrderByLastnameDesc</td>
+</tr>
+<tr>
+<td></td>
+<td>Not</td>
+<td>findByLastnameNot</td>
+</tr>
+<tr>
+<td></td>
+<td>In</td>
+<td>findByAgeIn(Collection<Age> ages)</td>
+</tr>
+<tr>
+<td></td>
+<td>NotIn</td>
+<td>findByAgeNotIn(Collection<Age> ages)</td>
+</tr>
+<tr>
+<td></td>
+<td>TRUE</td>
+<td>findByActiveTrue()</td>
+</tr>
+<tr>
+<td></td>
+<td>FALSE</td>
+<td>findByActiveFalse()</td>
+</tr>
+<tr>
+<td></td>
+<td>IgnoreCase</td>
+<td>findByFirstnameIgnoreCase</td>
+</tr>
+</tbody></table>
+<h2 id="JPA示例"><a href="#JPA示例" class="headerlink" title="JPA示例"></a>JPA示例</h2><h3 id="表数据"><a href="#表数据" class="headerlink" title="表数据"></a>表数据</h3><table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+<th>available(是否禁用)</th>
+<th>createTime</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>张三</td>
+<td>28</td>
+<td>true</td>
+<td>2018-01-01</td>
+</tr>
+<tr>
+<td>2</td>
+<td>李四</td>
+<td>22</td>
+<td>false</td>
+<td>2018-05-03</td>
+</tr>
+<tr>
+<td>3</td>
+<td>丽丽</td>
+<td>18</td>
+<td>true</td>
+<td>2018-12-30</td>
+</tr>
+</tbody></table>
+<h3 id="查询方法"><a href="#查询方法" class="headerlink" title="查询方法"></a>查询方法</h3><h4 id="By"><a href="#By" class="headerlink" title="By"></a>By</h4><ul>
+<li>根据name查询</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//select * from user where name=?1</span>
+User <span class="token function">findByName</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//等同findOneByName</span>
+List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">findByName</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//等同findAllByName</span></code></pre>
+<pre class=" language-java"><code class="language-java">userRepository<span class="token punctuation">.</span><span class="token function">findByName</span><span class="token punctuation">(</span><span class="token string">"张三"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>张三</th>
+<th>28</th>
+<th>true</th>
+<th>2018-01-01</th>
+</tr>
+</thead>
+</table>
+<hr>
+<h4 id="And"><a href="#And" class="headerlink" title="And"></a>And</h4><ul>
+<li>根据name和age查询</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//select * from user where name=?1 and age=?2</span>
+User <span class="token function">findByNameAndAge</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class=" language-java"><code class="language-java">userRepository<span class="token punctuation">.</span><span class="token function">findByNameAndAge</span><span class="token punctuation">(</span><span class="token string">"张三"</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>张三</th>
+<th>28</th>
+<th>true</th>
+<th>2018-01-01</th>
+</tr>
+</thead>
+</table>
+<hr>
+<h4 id="Or"><a href="#Or" class="headerlink" title="Or"></a>Or</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//select * from user where name=?1 or age=?2</span>
+User <span class="token function">findByNameOrAge</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="In"><a href="#In" class="headerlink" title="In"></a>In</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//select * from user where name in(?1)</span>
+List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">findByNameIn</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>String<span class="token operator">></span> nameList<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="GreaterThan"><a href="#GreaterThan" class="headerlink" title="GreaterThan"></a>GreaterThan</h4><ul>
+<li>如查询年龄大于20的</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//select * from user where age>?2</span>
+List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">findByAgeGreaterThan</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class=" language-java"><code class="language-java">userRepository<span class="token punctuation">.</span><span class="token function">findByAgeGreaterThan</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+<th>available</th>
+<th>createTime</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>张三</td>
+<td>28</td>
+<td>true</td>
+<td>2018-01-01</td>
+</tr>
+<tr>
+<td>2</td>
+<td>李四</td>
+<td>22</td>
+<td>false</td>
+<td>2018-05-03</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="Boolean查询"><a href="#Boolean查询" class="headerlink" title="Boolean查询"></a>Boolean查询</h4><ul>
+<li>如查询禁用的用户</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//select * from user where available = 0</span>
+List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">findByAvailableFalse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class=" language-java"><code class="language-java">userRepository<span class="token punctuation">.</span><span class="token function">findByAvailableFalse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<table>
+<thead>
+<tr>
+<th>2</th>
+<th>李四</th>
+<th>22</th>
+<th>false</th>
+<th>2018-05-03</th>
+</tr>
+</thead>
+</table>
+<hr>
+<h4 id="Between"><a href="#Between" class="headerlink" title="Between"></a>Between</h4><ul>
+<li>如按时间段查询</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//select * from user where createtime between ?1 and ?2</span>
+List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">findByCreateTimeBetween</span><span class="token punctuation">(</span>Date start<span class="token punctuation">,</span> Date end<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class=" language-java"><code class="language-java">userRepository<span class="token punctuation">.</span><span class="token function">findByCreateTimeBetween</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token string">"2018-05-01"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">Date</span><span class="token punctuation">(</span><span class="token string">"2019-05-01"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//这里new Date("2018-05-01")是举例，实际中自己格式化为java.util.Date类型即可</span></code></pre>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>age</th>
+<th>available</th>
+<th>createTime</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>李四</td>
+<td>22</td>
+<td>false</td>
+<td>2018-05-03</td>
+</tr>
+<tr>
+<td>3</td>
+<td>丽丽</td>
+<td>18</td>
+<td>true</td>
+<td>2018-12-30</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="Top"><a href="#Top" class="headerlink" title="Top"></a>Top</h4><ul>
+<li>查询前top页的数据</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//select * from user limit 10</span>
+List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">findTop10</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//select * from user where available = 1 limit 10</span>
+List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">findTop10ByAvailableIsTrue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<hr>
+<h4 id="count-统计"><a href="#count-统计" class="headerlink" title="count 统计"></a>count 统计</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//select count(1) where age=?1</span>
+<span class="token keyword">long</span> <span class="token function">countByAge</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<hr>
+<h2 id="原生SQL查询-Query"><a href="#原生SQL查询-Query" class="headerlink" title="原生SQL查询 @Query"></a>原生SQL查询 <a href="https://my.oschina.net/u/196373" target="_blank" rel="noopener">@Query</a></h2><p>JPA也支持原生sql查询，使用<code>@Query</code>注解使用，如：</p>
+<p>UserRepository:</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//原生sql查询</span>
+<span class="token annotation punctuation">@Query</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"select * from user where name=?1 and age > ?2"</span><span class="token punctuation">,</span> nativeQuery <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">queryBySQL</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>接口：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/sql"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">sql</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> userRepository<span class="token punctuation">.</span><span class="token function">queryBySQL</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+<p>测试：</p>
+<pre><code>GET http://localhost:8080/user/sql?name=张三&amp;age=10</code></pre><p><img src="https://oscimg.oschina.net/oscnet/fde32fd37d856860612bb42ff2e320b0839.jpg" alt=""></p>
+<h1 id="源码地址"><a href="#源码地址" class="headerlink" title="源码地址"></a>源码地址</h1><p><a href="https://gitee.com/yimingkeji/springboot/tree/master/jpa" target="_blank" rel="noopener">https://gitee.com/yimingkeji/springboot/tree/master/jpa</a></p>
+
+	</div>
+
+	<!--打赏-->
+  <div class="reward">
+   <div class="reward-button">赏 <span class="reward-code">
+    <span class="alipay-code"> <img class="alipay-img wdp-appear" src="/images/reward/zfb.png"><b>支付宝</b> </span>
+    <span class="wechat-code"> <img class="wechat-img wdp-appear" src="/images/reward/wx.png"><b>微信</b> </span>
+   </div>
+   <p class="reward-notice">如果文章对你有帮助，请作者喝杯咖啡吧！</p>
+  </div>
+  <!--打赏-->
+
+	<div class="post-nav">
+		<div class="post-nav-prev">
+				
+		</div>
+		<div class="post-nav-next">
+					
+						<a href="/2020/03/18/java/framework/springboot/springboot%E8%B7%A8%E5%9F%9F%E9%85%8D%E7%BD%AECORS/" rel="next" title="springboot跨域配置CORS">
+							springboot跨域配置CORS&nbsp<i class="fa fa-angle-double-right"></i>
+						</a>
+				  	
+			</div>
+			<div class="clear"></div>
+	</div>
+	<div style="text-align:center;">
+  <span id="busuanzi_container_site_pv" style="font-size:14px;margin-right:20px;color:#ccc;">
+      总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv" style="font-size:14px;margin-right:20px;color:#ccc;">
+    访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div>
+
+</article>
+
+<div class="post-toc">
+	<div class="toc-top">
+		Article Catalog
+	</div>
+	<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DEMO"><span class="toc-text">DEMO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JPA常用查询方法"><span class="toc-text">JPA常用查询方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#官方文档"><span class="toc-text">官方文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JPA示例"><span class="toc-text">JPA示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#表数据"><span class="toc-text">表数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询方法"><span class="toc-text">查询方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#By"><span class="toc-text">By</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#And"><span class="toc-text">And</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Or"><span class="toc-text">Or</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#In"><span class="toc-text">In</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GreaterThan"><span class="toc-text">GreaterThan</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Boolean查询"><span class="toc-text">Boolean查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Between"><span class="toc-text">Between</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Top"><span class="toc-text">Top</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#count-统计"><span class="toc-text">count 统计</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原生SQL查询-Query"><span class="toc-text">原生SQL查询 @Query</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#源码地址"><span class="toc-text">源码地址</span></a></li></ol>
+</div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '2dd25deab7cdd74074aa',
+        clientSecret: 'cf52ceb9f4c2fa3a6737c445149fbf55f24e2be5',
+        id: window.location.pathname,
+        repo: 'abulin_comments',
+        owner: 'yangzhenlong',
+        admin: 'yangzhenlong',
+        id: md5(location.pathname)
+    })
+    gitalk.render('gitalk-container')
+</script>
+
+
+
+
+
+
+
+</section>
+
+		</main>
+		<footer class="footer">
+	<div class="footer-info">
+		<p>
+			Copyright © 2019 - 2020 Abulin Blog
+		</p>
+		<p class="a">
+			Powered by <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a> | Theme - <a href="https://github.com/Chorer/hexo-theme-PureBlue" target="_blank" rel="noopener">PureBlue</a>
+		</p> 
+	</div>
+</footer>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script src="/js/navbar.js"></script>
+
+
+<script src="/js/pace.min.js"></script>
+
+
+<script src="/js/code.js"></script>
+
+
+<script src="/js/load.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/post-except.js"></script>
+
+
+	
+<script src="/js/jquery.fancybox.js"></script>
+
+	
+<script src="/js/jquery.fancyboxStart.js"></script>
+
+	
+		
+<script src="/js/toc.js"></script>
+
+		
+<script src="/js/jquery.toTop.js"></script>
+
+	
+
+
+	<script src="https://unpkg.com/vanilla-back-to-top@7.2.0/dist/vanilla-back-to-top.min.js"></script>
+	
+<script src="/js/IndexToTop.js"></script>
+
+
+
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</body>	
+</html>	
